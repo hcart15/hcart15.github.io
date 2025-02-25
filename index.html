@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="jumbotron">
+    <h1 class="display-4">Welcome to the TRV Application!</h1>
+    <p class="lead">Assess community risk based on crime, CEI, and employment data.</p>
+    <hr class="my-4">
+    <a class="btn btn-primary btn-lg" href="{{ url_for('risk') }}" role="button">Go to Risk Assessment</a>
+</div>
+{% endblock %}
+
