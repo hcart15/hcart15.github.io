@@ -4,7 +4,7 @@ import os
 
 # Set up paths
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-DATA_PATH = os.path.join(BASE_DIR, 'Data', 'consolidated_data_final_with_composite_boosts.csv')
+DATA_PATH = os.path.join(BASE_DIR, 'consolidated_data_final_with_composite_boosts.csv')
 MODEL_PATH = os.path.join(BASE_DIR, 'risk_model.pkl')
 
 # Load CSV into DataFrame
