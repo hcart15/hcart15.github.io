@@ -1,56 +1,44 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2575.4">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000; min-height: 14.0px}
-    span.s1 {font-kerning: none}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Risk Assessment</title>
+    <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
-<p class="p1"><span class="s1">&lt;!DOCTYPE html&gt;</span></p>
-<p class="p1"><span class="s1">&lt;html lang="en"&gt;</span></p>
-<p class="p1"><span class="s1">&lt;head&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;title&gt;Risk Assessment&lt;/title&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;link rel="stylesheet" href="/static/styles.css"&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/head&gt;</span></p>
-<p class="p1"><span class="s1">&lt;body&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;nav&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;a href="/"&gt;Home&lt;/a&gt; |</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;a href="/risk"&gt;Risk Assessment&lt;/a&gt; |</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;a href="/cei"&gt;CEI&lt;/a&gt; |</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;a href="/employment"&gt;Employment&lt;/a&gt; |</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;a href="/ml"&gt;ML Insights&lt;/a&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/nav&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;h1&gt;Risk Assessment&lt;/h1&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;label for="community"&gt;Select Community:&lt;/label&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;select id="community"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;option value="Community 1"&gt;Community 1&lt;/option&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;option value="Community 2"&gt;Community 2&lt;/option&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/select&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;p id="riskResult"&gt;&lt;/p&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;script&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>document.getElementById("community").addEventListener("change", function () {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const selected = this.value;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const result = document.getElementById("riskResult");</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>if (selected === "Community 1") {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>result.innerText = "Risk Level: High";</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>} else {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>result.innerText = "Risk Level: Moderate";</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>});</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/body&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/html&gt;</span></p>
+    <nav>
+        <a href="/">Home</a> |
+        <a href="/risk">Risk Assessment</a> |
+        <a href="/cei">CEI</a> |
+        <a href="/employment">Employment</a> |
+        <a href="/ml">ML Insights</a>
+    </nav>
+
+    <h1>Risk Assessment</h1>
+
+    <label for="community">Select Community:</label>
+    <select id="community">
+        <option value="">Select...</option>
+        <option value="Community 1">Community 1</option>
+        <option value="Community 2">Community 2</option>
+    </select>
+
+    <p id="riskResult"></p>
+
+    <script>
+        document.getElementById("community").addEventListener("change", function () {
+            const selected = this.value;
+            const result = document.getElementById("riskResult");
+
+            if (selected === "Community 1") {
+                result.innerText = "Risk Level: High";
+            } else if (selected === "Community 2") {
+                result.innerText = "Risk Level: Moderate";
+            } else {
+                result.innerText = "";
+            }
+        });
+    </script>
 </body>
 </html>
