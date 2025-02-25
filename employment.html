@@ -1,19 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employment - TRV Application</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav>
+        <a href="index.html">Home</a> |
+        <a href="risk.html">Risk Assessment</a> |
+        <a href="cei.html">CEI</a> |
+        <a href="employment.html">Employment</a> |
+        <a href="ml.html">ML Insights</a>
+    </nav>
 
+    <div class="content">
+        <h1>Employment Data</h1>
+        <p>View employment statistics for different communities.</p>
 
-<h2>Employment Data</h2>
-<div class="table-responsive">
-  table_data|safe
-</div>
+        <label for="employment">Choose a Community:</label>
+        <select id="employment" onchange="showEmployment()">
+            <option value="">Select...</option>
+            <option value="community1">Community 1</option>
+            <option value="community2">Community 2</option>
+        </select>
 
+        <p id="employmentResult"></p>
+    </div>
 
+    <script>
+        function showEmployment() {
+            const community = document.getElementById("employment").value;
+            const result = document.getElementById("employmentResult");
 
-<script>
-  $(document).ready(function() {
-      $('#data_table').DataTable({
-          "pageLength": 10,
-          "autoWidth": true
-      });
-  });
-</script>
-
-
+            if (community === "community1") {
+                result.innerText = "Community 1 Employment Rate: 85%";
+            } else if (community === "community2") {
+                result.innerText = "Community 2 Employment Rate: 72%";
+            } else {
+                result.innerText = "";
+            }
+        }
+    </script>
+</body>
+</html>
