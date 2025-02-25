@@ -1,20 +1,20 @@
-{% extends "base.html" %}
-{% block content %}
+
+
 <h2>ML Risk Assessment</h2>
 <form method="POST">
     <div class="form-group">
         <label for="community_ml">Select Community:</label>
         <select class="form-control" name="community_ml" id="community_ml">
-            {% for c in communities %}
-                <option value="{{ c }}">{{ c }}</option>
-            {% endfor %}
+            
+                <option value="c">c</option>
+            
         </select>
     </div>
     <button type="submit" class="btn btn-primary">Compute ML Risk</button>
 </form>
 <br>
-{% if risk_prediction %}
-    <h4>{{ risk_prediction }}</h4>
-{% endif %}
-{% endblock %}
+
+    <h4>risk_prediction</h4>
+
+
 

@@ -1,12 +1,12 @@
-{% extends "base.html" %}
-{% block content %}
+
+
 <h2>Employment Data</h2>
 <div class="table-responsive">
-  {{ table_data|safe }}
+  table_data|safe
 </div>
-{% endblock %}
 
-{% block scripts %}
+
+
 <script>
   $(document).ready(function() {
       $('#data_table').DataTable({
@@ -15,5 +15,5 @@
       });
   });
 </script>
-{% endblock %}
+
 
