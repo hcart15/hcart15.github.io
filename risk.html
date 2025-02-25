@@ -1,25 +1,42 @@
-<h2>Risk Assessment</h2>
-<form method="POST">
-    <div class="form-group">
-        <label for="property_type">Property Type:</label>
-        <select class="form-control" name="property_type" id="property_type">
-            
-                <option value="p">p</option>
-            
-        </select>
-    </div>
-    <div class="form-group">
-        <label for="community">Community:</label>
-        <select class="form-control" name="community" id="community">
-            
-                <option value="c">c</option>
-            
-        </select>
-    </div>
-    <button type="submit" class="btn btn-primary">Calculate Risk</button>
-</form>
-<br>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Risk Assessment</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav>
+        <a href="index.html">Home</a> |
+        <a href="risk.html">Risk Assessment</a> |
+        <a href="ml.html">ML Insights</a>
+    </nav>
 
-    <h4>Risk Score: risk_score / Consequence: consequence</h4>
-    
-        <img src="plot_url" class="img-fluid" alt="Risk Plot">
+    <h1>Risk Assessment</h1>
+    <p>Select a community to view its risk level:</p>
+
+    <label for="community">Choose Community:</label>
+    <select id="community" onchange="showRisk()">
+        <option value="">Select...</option>
+        <option value="community1">Community 1</option>
+        <option value="community2">Community 2</option>
+    </select>
+
+    <p id="riskResult"></p>
+
+    <script>
+        function showRisk() {
+            const community = document.getElementById("community").value;
+            const result = document.getElementById("riskResult");
+            if (community === "community1") {
+                result.innerText = "Community 1 Risk Level: High";
+            } else if (community === "community2") {
+                result.innerText = "Community 2 Risk Level: Moderate";
+            } else {
+                result.innerText = "";
+            }
+        }
+    </script>
+</body>
+</html>
