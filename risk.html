@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Risk Assessment</h2>
+<form method="POST">
+    <div class="form-group">
+        <label for="property_type">Property Type:</label>
+        <select class="form-control" name="property_type" id="property_type">
+            {% for p in property_types %}
+                <option value="{{ p }}">{{ p }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="community">Community:</label>
+        <select class="form-control" name="community" id="community">
+            {% for c in communities %}
+                <option value="{{ c }}">{{ c }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Calculate Risk</button>
+</form>
+<br>
+{% if risk_score is not none %}
+    <h4>Risk Score: {{ risk_score }} / Consequence: {{ consequence }}</h4>
+    {% if plot_url %}
+        <img src="{{ plot_url }}" class="img-fluid" alt="Risk Plot">
+    {% endif %}
+{% endif %}
+{% endblock %}
+
