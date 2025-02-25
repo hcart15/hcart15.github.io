@@ -2,25 +2,23 @@ from flask import Flask, render_template, jsonify
 import pandas as pd
 import os
 
-# Set up paths
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-DATA_PATH = os.path.join(BASE_DIR, 'consolidated_data_final_with_composite_boosts.csv')
-MODEL_PATH = os.path.join(BASE_DIR, 'risk_model.pkl')
+# Initialize Flask app
+app = Flask(__name__, template_folder='templates', static_folder='static')
+
+# Path to CSV (in project root folder)
+CSV_FILE = os.path.join(os.path.dirname(__file__), 'consolidated_data_final_with_composite_boosts.csv')
 
 # Load CSV into DataFrame
 try:
-    if os.path.exists(DATA_PATH):
-        df = pd.read_csv(DATA_PATH)
+    if os.path.exists(CSV_FILE):
+        df = pd.read_csv(CSV_FILE)
         print("✅ CSV loaded successfully.")
     else:
-        print(f"⚠️ CSV not found at: {DATA_PATH}")
+        print(f"⚠️ CSV not found at: {CSV_FILE}")
         df = pd.DataFrame()
 except Exception as e:
     print(f"❌ Error loading CSV: {e}")
     df = pd.DataFrame()
-
-# Initialize Flask app
-app = Flask(__name__, template_folder='templates', static_folder='static')
 
 # Home page
 @app.route('/')
@@ -48,7 +46,7 @@ def employment():
 def ml():
     return render_template('ml.html')
 
-# API for Dynamic Data (Optional)
+# API Endpoint for Risk Data
 @app.route('/api/risk_data', methods=['GET'])
 def risk_data():
     if not df.empty:
