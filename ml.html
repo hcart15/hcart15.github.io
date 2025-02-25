@@ -1,20 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ML Insights - TRV Application</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <nav>
+        <a href="index.html">Home</a> |
+        <a href="risk.html">Risk Assessment</a> |
+        <a href="cei.html">CEI</a> |
+        <a href="employment.html">Employment</a> |
+        <a href="ml.html">ML Insights</a>
+    </nav>
 
+    <div class="content">
+        <h1>Machine Learning Insights</h1>
+        <p>View risk predictions based on ML models.</p>
 
-<h2>ML Risk Assessment</h2>
-<form method="POST">
-    <div class="form-group">
-        <label for="community_ml">Select Community:</label>
-        <select class="form-control" name="community_ml" id="community_ml">
-            
-                <option value="c">c</option>
-            
-        </select>
+        <canvas id="mlChart" width="400" height="200"></canvas>
     </div>
-    <button type="submit" class="btn btn-primary">Compute ML Risk</button>
-</form>
-<br>
 
-    <h4>risk_prediction</h4>
-
-
-
+    <script>
+        const ctx = document.getElementById('mlChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Community 1', 'Community 2', 'Community 3'],
+                datasets: [{
+                    label: 'Predicted Risk Level',
+                    data: [80, 60, 40],
+                    backgroundColor: ['#ff6384', '#36a2eb', '#ffce56']
+                }]
+            },
+            options: { responsive: true }
+        });
+    </script>
+</body>
+</html>
