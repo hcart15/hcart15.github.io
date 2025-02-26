@@ -3,4 +3,3 @@ gunicorn
 pandas
 numpy
 scikit-learn
-chart.js
