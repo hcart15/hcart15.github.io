@@ -1,40 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Employment Data</title>
-    <link rel="stylesheet" href="/static/styles.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</head>
-<body>
-    <nav>
-        <a href="/">Home</a> |
-        <a href="/risk">Risk Assessment</a> |
-        <a href="/cei">CEI</a> |
-        <a href="/employment">Employment</a> |
-        <a href="/ml">ML Insights</a>
-    </nav>
+{% extends "base.html" %}
 
-    <h1>Employment Data</h1>
+{% block title %}Employment Data{% endblock %}
 
-    <canvas id="employmentChart" width="400" height="200"></canvas>
+{% block content %}
+<h1>Employment Data</h1>
 
-    <script>
-        const ctx = document.getElementById('employmentChart').getContext('2d');
-        new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: ['Community 1', 'Community 2', 'Community 3'],
-                datasets: [{
-                    label: 'Employment Rate (%)',
-                    data: [85, 72, 90],
-                    borderColor: '#4caf50',
-                    fill: false
-                }]
-            },
-            options: { responsive: true }
-        });
-    </script>
-</body>
-</html>
+<canvas id="employmentChart" width="400" height="200"></canvas>
+
+<script>
+    const ctx = document.getElementById('employmentChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['Community 1', 'Community 2', 'Community 3'],
+            datasets: [{
+                label: 'Employment Rate (%)',
+                data: [85, 72, 90],
+                borderColor: '#4caf50',
+                fill: false
+            }]
+        },
+        options: { responsive: true }
+    });
+</script>
+{% endblock %}
