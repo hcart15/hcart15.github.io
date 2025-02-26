@@ -1,32 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Community Engagement Index - TRV Application</title>
-    <link rel="stylesheet" href="/static/styles.css">
-</head>
-<body>
-<nav>
-    <a href="/">Home</a> |
-    <a href="/risk">Risk Assessment</a> |
-    <a href="/cei">CEI</a> |
-    <a href="/employment">Employment</a> |
-    <a href="/ml">ML Insights</a>
-</nav>
-
-<div class="container">
-    <h1>Community Engagement Index</h1>
-    <p>Explore engagement metrics across communities.</p>
-    <ul>
-        <li>Community A: 85%</li>
-        <li>Community B: 70%</li>
-        <li>Community C: 60%</li>
-    </ul>
+{% extends "base.html" %}
+{% block content %}
+<h2>CEI Data</h2>
+<div class="table-responsive">
+    {{ table_data|safe }}
 </div>
+{% endblock %}
 
-<footer>
-    <p>&copy; 2025 TRV Application. All rights reserved.</p>
-</footer>
-</body>
-</html>
+{% block scripts %}
+<script>
+  $(document).ready(function() {
+      $('#data_table').DataTable({
+          "pageLength": 10,
+          "autoWidth": true,
+          "scrollX": true   // Enable horizontal scrolling
+      });
+  });
+</script>
+{% endblock %}
