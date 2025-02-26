@@ -14,7 +14,7 @@ else:
     df = pd.DataFrame()
 
 # Initialize Flask app
-app = Flask(__name__)
+app = Flask(__name__, template_folder='.')
 
 # Home page
 @app.route('/')
