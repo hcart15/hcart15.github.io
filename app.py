@@ -5,10 +5,10 @@ import os
 # Initialize Flask app
 app = Flask(__name__, template_folder='templates', static_folder='static')
 
-# Path to CSV (in project root folder)
+# Path to the CSV
 CSV_FILE = os.path.join(os.path.dirname(__file__), 'consolidated_data_final_with_composite_boosts.csv')
 
-# Load CSV into DataFrame
+# Load the CSV into a DataFrame
 try:
     if os.path.exists(CSV_FILE):
         df = pd.read_csv(CSV_FILE)
@@ -46,13 +46,10 @@ def employment():
 def ml():
     return render_template('ml.html')
 
-# API Endpoint for Risk Data
+# API for Dynamic Data (Optional)
 @app.route('/api/risk_data', methods=['GET'])
 def risk_data():
-    if not df.empty:
-        return jsonify(df.to_dict(orient='records'))
-    else:
-        return jsonify({"error": "No data available"}), 404
+    return jsonify(df.to_dict(orient='records'))
 
 # Run app
 if __name__ == '__main__':
