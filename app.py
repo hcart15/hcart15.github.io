@@ -1,18 +1,15 @@
-import os
+from flask import Flask, render_template
 import pandas as pd
-from flask import Flask, render_template, jsonify
+import os
 
-app = Flask(__name__, template_folder='templates', static_folder='static')
+app = Flask(__name__, template_folder='.', static_folder='.')
 
-# Path to CSV
-CSV_FILE = os.path.join(os.path.dirname(__file__), 'consolidated_data_final_with_composite_boosts.csv')
-
-# Load Data
-if os.path.exists(CSV_FILE):
-    df = pd.read_csv(CSV_FILE)
-    print("✅ CSV loaded successfully.")
+# Load CSV
+CSV_PATH = os.path.join(os.path.dirname(__file__), 'consolidated_data_final_with_composite_boosts.csv')
+if os.path.exists(CSV_PATH):
+    df = pd.read_csv(CSV_PATH)
 else:
-    print(f"⚠️ CSV not found at: {CSV_FILE}")
+    print(f"⚠️ CSV not found at: {CSV_PATH}")
     df = pd.DataFrame()
 
 # Routes
