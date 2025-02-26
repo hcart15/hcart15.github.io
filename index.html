@@ -1,11 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>TRV Application</title>
-</head>
-<body>
-    <h1>Welcome to TRV!</h1>
-    <p>This is a test page to confirm HTML rendering works.</p>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="display-4">Welcome to TRV Application</h1>
+    <p class="lead">Assess community risk based on crime, CEI, and employment data.</p>
+    <a class="btn btn-primary" href="{{ url_for('risk') }}">Go to Risk Assessment</a>
+</div>
+{% endblock %}
