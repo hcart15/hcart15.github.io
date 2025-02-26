@@ -1,39 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Community Economic Index (CEI)</title>
-    <link rel="stylesheet" href="/static/styles.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</head>
-<body>
-    <nav>
-        <a href="/">Home</a> |
-        <a href="/risk">Risk Assessment</a> |
-        <a href="/cei">CEI</a> |
-        <a href="/employment">Employment</a> |
-        <a href="/ml">ML Insights</a>
-    </nav>
+{% extends "base.html" %}
 
-    <h1>Community Economic Index (CEI)</h1>
+{% block title %}Community Economic Index (CEI){% endblock %}
 
-    <canvas id="ceiChart" width="400" height="200"></canvas>
+{% block content %}
+<h1>Community Economic Index (CEI)</h1>
 
-    <script>
-        const ctx = document.getElementById('ceiChart').getContext('2d');
-        new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ['Community 1', 'Community 2', 'Community 3'],
-                datasets: [{
-                    label: 'CEI Score',
-                    data: [75, 60, 85],
-                    backgroundColor: ['#4caf50', '#ff9800', '#2196f3']
-                }]
-            },
-            options: { responsive: true }
-        });
-    </script>
-</body>
-</html>
+<canvas id="ceiChart" width="400" height="200"></canvas>
+
+<script>
+    const ctx = document.getElementById('ceiChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Community 1', 'Community 2', 'Community 3'],
+            datasets: [{
+                label: 'CEI Score',
+                data: [75, 60, 85],
+                backgroundColor: ['#4caf50', '#ff9800', '#2196f3']
+            }]
+        },
+        options: { responsive: true }
+    });
+</script>
+{% endblock %}
