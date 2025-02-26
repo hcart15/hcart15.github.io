@@ -2,7 +2,7 @@ from flask import Flask, render_template
 import pandas as pd
 import os
 
-app = Flask(__name__, template_folder='.', static_folder='.')
+app = Flask(__name__, template_folder='templates', static_folder='static')
 
 # Load CSV
 CSV_PATH = os.path.join(os.path.dirname(__file__), 'consolidated_data_final_with_composite_boosts.csv')
