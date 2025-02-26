@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - TRV Application</title>
+    <title>Risk Assessment - TRV Application</title>
     <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
-<!-- Navigation Bar -->
 <nav>
     <a href="/">Home</a> |
     <a href="/risk">Risk Assessment</a> |
@@ -16,16 +15,32 @@
     <a href="/ml">ML Insights</a>
 </nav>
 
-<!-- Main Content Block -->
 <div class="container">
-    <h1>Welcome to the TRV Application!</h1>
-    <p>Use the navigation above to explore risk assessment, CEI, employment, and more.</p>
-    <a class="btn" href="/risk">Go to Risk Assessment</a>
+    <h1>Risk Assessment Dashboard</h1>
+    <p>View the risk analysis for various properties and neighborhoods.</p>
+    <div id="riskChart"></div>
 </div>
 
-<!-- Footer -->
 <footer>
     <p>&copy; 2025 TRV Application. All rights reserved.</p>
 </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+// Example chart (you can replace this with dynamic data later)
+const ctx = document.createElement('canvas');
+document.getElementById('riskChart').appendChild(ctx);
+new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Neighborhood A', 'Neighborhood B', 'Neighborhood C'],
+        datasets: [{
+            label: 'Risk Score',
+            data: [75, 55, 40],
+            backgroundColor: ['red', 'orange', 'green']
+        }]
+    }
+});
+</script>
 </body>
 </html>
