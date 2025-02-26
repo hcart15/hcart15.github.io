@@ -1,44 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Risk Assessment</title>
-    <link rel="stylesheet" href="/static/styles.css">
-</head>
-<body>
-    <nav>
-        <a href="/">Home</a> |
-        <a href="/risk">Risk Assessment</a> |
-        <a href="/cei">CEI</a> |
-        <a href="/employment">Employment</a> |
-        <a href="/ml">ML Insights</a>
-    </nav>
+{% extends "base.html" %}
 
-    <h1>Risk Assessment</h1>
+{% block title %}Risk Assessment{% endblock %}
 
-    <label for="community">Select Community:</label>
-    <select id="community">
-        <option value="">Select...</option>
-        <option value="Community 1">Community 1</option>
-        <option value="Community 2">Community 2</option>
-    </select>
+{% block content %}
+<h1>Risk Assessment</h1>
 
-    <p id="riskResult"></p>
+<label for="community">Select Community:</label>
+<select id="community">
+    <option value="">Select...</option>
+    <option value="Community 1">Community 1</option>
+    <option value="Community 2">Community 2</option>
+</select>
 
-    <script>
-        document.getElementById("community").addEventListener("change", function () {
-            const selected = this.value;
-            const result = document.getElementById("riskResult");
+<p id="riskResult"></p>
 
-            if (selected === "Community 1") {
-                result.innerText = "Risk Level: High";
-            } else if (selected === "Community 2") {
-                result.innerText = "Risk Level: Moderate";
-            } else {
-                result.innerText = "";
-            }
-        });
-    </script>
-</body>
-</html>
+<script>
+    document.getElementById("community").addEventListener("change", function () {
+        const selected = this.value;
+        const result = document.getElementById("riskResult");
+
+        if (selected === "Community 1") {
+            result.innerText = "Risk Level: High";
+        } else if (selected === "Community 2") {
+            result.innerText = "Risk Level: Moderate";
+        } else {
+            result.innerText = "";
+        }
+    });
+</script>
+{% endblock %}
