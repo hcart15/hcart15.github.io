@@ -1,32 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Employment Insights - TRV Application</title>
-    <link rel="stylesheet" href="/static/styles.css">
-</head>
-<body>
-<nav>
-    <a href="/">Home</a> |
-    <a href="/risk">Risk Assessment</a> |
-    <a href="/cei">CEI</a> |
-    <a href="/employment">Employment</a> |
-    <a href="/ml">ML Insights</a>
-</nav>
-
-<div class="container">
-    <h1>Employment Insights</h1>
-    <p>Current employment trends and opportunities by region.</p>
-    <ul>
-        <li>Region A: 4.5% Unemployment</li>
-        <li>Region B: 3.2% Unemployment</li>
-        <li>Region C: 6.8% Unemployment</li>
-    </ul>
+{% extends "base.html" %}
+{% block content %}
+<h2>Employment Data</h2>
+<div class="table-responsive">
+    {{ table_data|safe }}
 </div>
+{% endblock %}
 
-<footer>
-    <p>&copy; 2025 TRV Application. All rights reserved.</p>
-</footer>
-</body>
-</html>
+{% block scripts %}
+<script>
+  $(document).ready(function() {
+      $('#data_table').DataTable({
+          "pageLength": 10,
+          "autoWidth": true
+      });
+  });
+</script>
+{% endblock %}
