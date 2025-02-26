@@ -1,25 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TRV Application</title>
-    <link rel="stylesheet" href="/static/styles.css">
-</head>
-<body>
-    <nav>
-        <a href="/">Home</a> |
-        <a href="/risk">Risk Assessment</a> |
-        <a href="/cei">CEI</a> |
-        <a href="/employment">Employment</a> |
-        <a href="/ml">ML Insights</a>
-    </nav>
+{% extends "base.html" %}
 
-    <div class="jumbotron">
-        <h1>Welcome to the TRV Application!</h1>
-        <p>Assess community risk based on crime, CEI, and employment data.</p>
-        <hr>
-        <a class="btn" href="/risk">Go to Risk Assessment</a>
-    </div>
-</body>
-</html>
+{% block title %}Home - TRV Application{% endblock %}
+
+{% block content %}
+<h1>Welcome to the TRV Application!</h1>
+<p>Use the navigation above to explore risk assessment, CEI, employment, and more.</p>
+<a class="btn" href="/risk">Go to Risk Assessment</a>
+{% endblock %}
