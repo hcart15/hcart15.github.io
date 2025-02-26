@@ -1,46 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Risk Assessment - TRV Application</title>
-    <link rel="stylesheet" href="/static/styles.css">
-</head>
-<body>
-<nav>
-    <a href="/">Home</a> |
-    <a href="/risk">Risk Assessment</a> |
-    <a href="/cei">CEI</a> |
-    <a href="/employment">Employment</a> |
-    <a href="/ml">ML Insights</a>
-</nav>
-
-<div class="container">
-    <h1>Risk Assessment Dashboard</h1>
-    <p>View the risk analysis for various properties and neighborhoods.</p>
-    <div id="riskChart"></div>
-</div>
-
-<footer>
-    <p>&copy; 2025 TRV Application. All rights reserved.</p>
-</footer>
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script>
-// Example chart (you can replace this with dynamic data later)
-const ctx = document.createElement('canvas');
-document.getElementById('riskChart').appendChild(ctx);
-new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: ['Neighborhood A', 'Neighborhood B', 'Neighborhood C'],
-        datasets: [{
-            label: 'Risk Score',
-            data: [75, 55, 40],
-            backgroundColor: ['red', 'orange', 'green']
-        }]
-    }
-});
-</script>
-</body>
-</html>
+{% extends "base.html" %}
+{% block content %}
+<h2>Risk Assessment</h2>
+<form method="POST">
+    <div class="form-group">
+        <label for="property_type">Property Type:</label>
+        <select class="form-control" name="property_type" id="property_type">
+            {% for p in property_types %}
+                <option value="{{ p }}">{{ p }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="community">Community:</label>
+        <select class="form-control" name="community" id="community">
+            {% for c in communities %}
+                <option value="{{ c }}">{{ c }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Calculate Risk</button>
+</form>
+<br>
+{% if risk_score is not none %}
+    <h4>Risk Score: {{ risk_score }} / Consequence: {{ consequence }}</h4>
+    {% if plot_url %}
+        <img src="{{ plot_url }}" class="img-fluid" alt="Risk Plot">
+    {% endif %}
+{% endif %}
+{% endblock %}
