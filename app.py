@@ -135,43 +135,47 @@ def employment():
 # ---------------------
 # ML Risk Assessment Tab (Tab 4)
 # ---------------------
+from flask_caching import Cache
+
+# Setup Flask caching
+cache = Cache(app, config={"CACHE_TYPE": "simple"})
+
 @app.route("/ml", methods=["GET", "POST"])
+@cache.cached(timeout=300)  # Cache for 5 minutes
 def ml():
     communities = sorted(consolidated_data["Community"].dropna().unique())
     risk_prediction = None
-    selected_community = None  # Track the selected community
 
     if request.method == "POST":
         selected_community = request.form.get("community_ml")
 
+        # Load pre-trained model
         try:
             risk_model = joblib.load("risk_model.pkl")
         except Exception as e:
-            risk_prediction = f"Error loading model: {e}"
-            return render_template("ml.html", communities=communities, selected_community=selected_community, risk_prediction=risk_prediction)
+            return render_template("ml.html", communities=communities, risk_prediction=f"Error loading model: {e}")
 
+        # Get data for selected community
         row = consolidated_data[consolidated_data["Community"] == selected_community]
         if row.empty:
-            risk_prediction = "Community data not found."
-        else:
-            feature_cols = [col for col in row.select_dtypes(include=["number"]).columns if col.lower() != "risk_score"]
-            X_new = row[feature_cols].fillna(0)
-            if X_new.shape[0] > 1:
-                X_new = X_new.mean().to_frame().T
-            else:
-                X_new = X_new.iloc[[0]]
+            return render_template("ml.html", communities=communities, risk_prediction="Community data not found.")
 
-            if hasattr(risk_model, "feature_names_in_"):
-                expected_features = risk_model.feature_names_in_
-                X_new = X_new.reindex(columns=expected_features, fill_value=0)
+        # Prepare data
+        feature_cols = [col for col in row.select_dtypes(include=["number"]).columns if col.lower() != "risk_score"]
+        X_new = row[feature_cols].fillna(0)
 
-            try:
-                pred = risk_model.predict(X_new)[0]
-                risk_prediction = f"Predicted ML Risk Score for {selected_community}: {pred:.2f}"
-            except Exception as e:
-                risk_prediction = f"ML prediction failed: {e}"
+        # Ensure correct column order
+        if hasattr(risk_model, "feature_names_in_"):
+            X_new = X_new.reindex(columns=risk_model.feature_names_in_, fill_value=0)
 
-    return render_template("ml.html", communities=communities, selected_community=selected_community, risk_prediction=risk_prediction)
+        # Predict risk score
+        try:
+            pred = risk_model.predict(X_new)[0]
+            risk_prediction = f"Predicted ML Risk Score for {selected_community}: {pred:.2f}"
+        except Exception as e:
+            risk_prediction = f"ML prediction failed: {e}"
+
+    return render_template("ml.html", communities=communities, risk_prediction=risk_prediction)
 
 # ---------------------
 # Risk Score Calculation Function
