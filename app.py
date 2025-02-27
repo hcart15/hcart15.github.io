@@ -11,7 +11,7 @@ from flask_caching import Cache  # Import caching
 app = Flask(__name__, template_folder="templates", static_folder="static")
 
 # Load data (Ensure correct path)
-consolidated_data = pd.read_csv("data/consolidated_data_final_with_composite_boosts.csv")
+consolidated_data = pd.read_csv("consolidated_data_final_with_composite_boosts.csv")
 
 # Setup Flask-Caching
 cache = Cache(app, config={"CACHE_TYPE": "simple"})  # Simple in-memory cache
