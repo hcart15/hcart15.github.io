@@ -10,7 +10,7 @@ import joblib  # Load ML model
 app = Flask(__name__)
 
 # Load data (Ensure correct path)
-consolidated_data = pd.read_csv("data/consolidated_data_final_with_composite_boosts.csv")
+consolidated_data = pd.read_csv("consolidated_data_final_with_composite_boosts.csv")
 
 # ---------------------
 # Home Route
