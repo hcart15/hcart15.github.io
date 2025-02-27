@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="text-center">CEI Data</h1>
+
+<div class="table-responsive">
+    <table class="table table-striped table-bordered text-center">
+        {{ table_data | safe }}
+    </table>
+</div>
+
+{% endblock %}
+

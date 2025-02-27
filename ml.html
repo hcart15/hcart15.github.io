@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>ML Risk Assessment</h1>
+
+<form method="POST">
+    <label for="community_ml">Select a Community:</label>
+    <select name="community_ml" id="community_ml" class="form-control">
+        {% for community in communities %}
+        <option value="{{ community }}" {% if community == selected_community %}selected{% endif %}>
+            {{ community }}
+        </option>
+        {% endfor %}
+    </select>
+    <button type="submit" class="btn btn-primary mt-2">Predict Risk</button>
+</form>
+
+{% if risk_prediction %}
+<div class="alert alert-info mt-3">{{ risk_prediction }}</div>
+{% endif %}
+
+{% endblock %}
+

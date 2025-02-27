@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="text-center text-primary font-weight-bold">Risk Assessment</h2>
+    <p class="text-center text-muted">Select a property type and community to assess risk.</p>
+
+    <!-- Risk Form -->
+    <form method="POST" class="p-3 border rounded shadow-sm bg-light">
+        <div class="form-group">
+            <label for="property_type"><strong>Select Property Type:</strong></label>
+            <select id="property_type" name="property_type" class="form-control">
+                {% for property in property_types %}
+                <option value="{{ property }}">{{ property }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-group mt-3">
+            <label for="community"><strong>Select Community:</strong></label>
+            <select id="community" name="community" class="form-control">
+                {% for community in communities %}
+                <option value="{{ community }}">{{ community }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-3 w-100">Calculate Risk</button>
+    </form>
+
+    <!-- Display Results -->
+    {% if risk_score is not none and consequence is not none %}
+    <div class="card mt-4 shadow-sm">
+        <div class="card-body">
+            <h5 class="card-title text-center text-success">Risk Score: {{ risk_score | round(2) }}</h5>
+            <h5 class="card-title text-center text-danger">Consequence: {{ consequence | round(2) }}</h5>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Display Risk Graph -->
+    {% if plot_url %}
+    <div class="text-center mt-4">
+        <h5 class="text-dark">Risk Assessment Graph</h5>
+        <img src="{{ plot_url }}" alt="Risk Graph" class="img-fluid border rounded shadow">
+    </div>
+    {% endif %}
+</div>
+
+<!-- Ensure Bootstrap is Applied -->
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+    .container {
+        max-width: 600px;
+    }
+    .card {
+        background-color: #ffffff;
+        border: 1px solid #ddd;
+    }
+    .card-title {
+        font-weight: bold;
+    }
+</style>
+
+{% endblock %}
+
