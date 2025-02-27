@@ -1,16 +1,23 @@
 import matplotlib
 matplotlib.use("Agg")  # Non-interactive backend for Flask
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, send_from_directory
 import pandas as pd
 import matplotlib.pyplot as plt
 from io import BytesIO
 import base64
-import joblib  # Load ML model
+from flask_caching import Cache  # Import caching
 
-app = Flask(__name__)
+# Initialize Flask App
+app = Flask(__name__, template_folder="templates", static_folder="static")
 
-# Load data (Ensure correct path)
-consolidated_data = pd.read_csv("consolidated_data_final_with_composite_boosts.csv")
+# Setup Flask-Caching
+cache = Cache(app, config={"CACHE_TYPE": "simple"})  # Simple in-memory cache
+
+# Cache static files (CSS, JS, images) for 1 day
+@app.route('/static/<path:filename>')
+@cache.cached(timeout=86400)  # Cache for 24 hours
+def cached_static(filename):
+    return send_from_directory("static", filename)
 
 # ---------------------
 # Home Route
@@ -51,7 +58,6 @@ def risk():
             ax.grid(True, linestyle="--", linewidth=0.7, alpha=0.7)
             ax.axvline(x=50, color="black", linestyle="-", linewidth=1.2, alpha=0.5)
             ax.axhline(y=50, color="black", linestyle="-", linewidth=1.2, alpha=0.5)
-
             ax.text(risk_score + 2, consequence + 2, f"({risk_score:.2f}, {consequence:.2f})",
                     color="blue", fontsize=12, weight="bold")
 
@@ -65,8 +71,6 @@ def risk():
             plot_data = base64.b64encode(buf.getvalue()).decode("utf-8")
             plot_url = f"data:image/png;base64,{plot_data}"
             plt.close(fig)
-
-            print("✅ Graph successfully generated!")  
 
     return render_template("risk.html",
                            property_types=property_types,
