@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 from io import BytesIO
 import base64
 from flask_caching import Cache  # Import caching
+import joblib
 
 # Initialize Flask App
 app = Flask(__name__, template_folder="templates", static_folder="static")
